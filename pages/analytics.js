@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Number from './number';
+import Table from './table';
 
 export default function Analytics(props) {
     const { config } = props;
@@ -41,6 +42,9 @@ export default function Analytics(props) {
                 <Number item={{ name: "Count sales", stat: countSales }}/>
                 <Number item={{ name: "Open auctions", stat: openAuctions }}/>
             </dl>
+            <div className='mt-10'>
+                <Table bestSellers={bestSellers || []} />
+            </div>
         </div>
     )
 }
