@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Number from './number';
-import Table from './table';
+import Number from '../components/number';
+import Table from '../components/table';
 
 export default function Analytics(props) {
     const { config } = props;

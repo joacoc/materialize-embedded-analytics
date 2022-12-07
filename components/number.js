@@ -4,7 +4,7 @@ const stats = [
   { name: 'Avg. Click Rate', stat: '24.57%' },
 ]
 
-export default function Example(props) {
+function Number(props) {
   const { item } = props;
   const { name, stat } = item;
   return (
@@ -14,3 +14,9 @@ export default function Example(props) {
     </div>
   )
 }
+
+Number.defaultProps = {
+  item: {}
+}
+
+export default Number;

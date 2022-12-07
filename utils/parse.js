@@ -1,6 +1,4 @@
-'use strict'
-
-var url = require('url')
+import url from 'url';
 
 //Parse method copied from https://github.com/brianc/node-postgres
 //Copyright (c) 2010-2014 Brian Carlson (brian.m.carlson@gmail.com)
@@ -8,6 +6,10 @@ var url = require('url')
 
 //parses a connection string
 function parse(str) {
+  if (typeof str !== "string") {
+    return {};
+  }
+
   //unix socket
   if (str.charAt(0) === '/') {
     var config = str.split(' ')

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { parse } from "./parse";
+import { parse } from "../utils/parse";
 
 export function isNumeric(str) {
     if (typeof str !== "string") return false
@@ -89,7 +89,7 @@ function Source(props) {
             onConfigChange(config);
         }
     };
-    // console.log(parse("postgres://joaquin%40materialize.com@4eylxydzhfj2ef3sblalf5h32.us-east-1.aws.materialize.cloud:6875/materialize"));
+
     return (
         <div className={className}>
             {/**
