@@ -104,7 +104,7 @@ function Source(props) {
                         name="materialize_uri"
                         id="uri"
                         autoComplete="materialize_uri"
-                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border-gray-300 rounded-md`}
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
                         onChange={buildHandleChange("uri")}
                         value={uri}
                     />
@@ -122,14 +122,14 @@ function Source(props) {
                         name="materialize_host"
                         id="host"
                         autoComplete="materialize_host"
-                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border-gray-300 rounded-md`}
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
                         onChange={buildHandleChange("host")}
                         value={host}
                     />
                 </div>
 
                 {/* Authorizations */}
-                <p className="block text-sm font-medium text-white sm:mt-px sm:py-2">
+                <p className="block text-sm font-medium sm:mt-px sm:py-2">
                     Authorization
                 </p>
                 {/**
@@ -142,7 +142,7 @@ function Source(props) {
                         name="materialize_user"
                         id="user"
                         autoComplete="materialize_user"
-                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border-gray-300 rounded-md`}
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
                         onChange={buildHandleChange("user")}
                         value={authorization && authorization.user}
                         readOnly={editable === false}
@@ -159,7 +159,7 @@ function Source(props) {
                         name="materialize_password"
                         id="password"
                         autoComplete="materialize_password"
-                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border-gray-300 rounded-md`}
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
                         onChange={buildHandleChange("password")}
                         value={authorization && authorization.password}
                     />
@@ -167,7 +167,7 @@ function Source(props) {
 
 
                 <div className="mt-4">
-                    <button className="bg-purple-700 text-sm w-full rounded p-1 hover:bg-purple-500" onClick={onContinueClick}>
+                    <button className="bg-purple-700 text-sm w-full rounded p-1 hover:bg-purple-500 text-white" onClick={onContinueClick}>
                         Continue
                     </button>
                 </div>
