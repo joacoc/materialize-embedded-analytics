@@ -4,7 +4,7 @@ import Table from '../components/table';
 
 export default function Analytics(props) {
     const { config } = props;
-    const [{ totalSales, countSales, bestSellers, openAuctions }, setData] = useState({});
+    const [{ totalPurchases, countPurchases, bestSellers, totalUsers }, setData] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -38,9 +38,9 @@ export default function Analytics(props) {
     return (
         <div className='w-1/2'>
             <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-                <Number item={{ name: "Total sales", stat: totalSales }}/>
-                <Number item={{ name: "Count sales", stat: countSales }}/>
-                <Number item={{ name: "Open auctions", stat: openAuctions }}/>
+                <Number item={{ name: "Total purchases", stat: totalPurchases }}/>
+                <Number item={{ name: "Count purchases", stat: countPurchases }}/>
+                <Number item={{ name: "Users", stat: totalUsers }}/>
             </dl>
             <div className='mt-10'>
                 <Table bestSellers={bestSellers || []} />

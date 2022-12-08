@@ -7,7 +7,7 @@ function Table(props) {
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Best sellers</h1>
           <p className="mt-2 text-sm text-gray-700">
-            Sort by most sells
+            Sort by most purchases
           </p>
         </div>
       </div>
@@ -22,23 +22,32 @@ function Table(props) {
                       scope="col"
                       className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Seller
+                      Name
                     </th>
                     <th
                       scope="col"
                       className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Sells
+                      Category
+                    </th>
+                    <th
+                      scope="col"
+                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Purchases
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {bestSellers.map((bestSellerDetails) => (
-                    <tr key={bestSellerDetails.seller}>
+                    <tr key={bestSellerDetails.name}>
                       <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                        {bestSellerDetails.seller}
+                        {bestSellerDetails.name}
                       </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{bestSellerDetails.sells}</td>
+                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{bestSellerDetails.category}</td>
+                      <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
+                        {bestSellerDetails.purchases}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

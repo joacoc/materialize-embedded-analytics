@@ -29,19 +29,19 @@ export default async function list(req, res) {
 
         try {
             await client.connect();
-            const totalSalesQuery = client.query("SELECT * FROM total_sales;");
-            const countSalesQuery = client.query("SELECT * FROM count_sales;");
-            const bestSellersQuery = client.query("SELECT * FROM best_sellers ORDER BY sells DESC;");
-            const openAuctionsQuery = client.query("SELECT * FROM open_auctions;");
+            const totalPurchasesQuery = client.query("SELECT * FROM shop.total_purchases;");
+            const countPurchasesQuery = client.query("SELECT * FROM shop.count_purchases;");
+            const bestSellersQuery = client.query("SELECT * FROM shop.best_sellers ORDER BY purchases DESC;");
+            const totalUsersQuery = client.query("SELECT * FROM shop.total_users;");
 
             const [
-                { rows: [{ total_sales: totalSales }] },
-                { rows: [{ count_sales: countSales }] },
+                { rows: [{ total_purchases: totalPurchases }] },
+                { rows: [{ count_purchases: countPurchases }] },
                 { rows: bestSellers },
-                { rows: [{ open_auctions: openAuctions }] },
-            ] = await Promise.all([totalSalesQuery, countSalesQuery, bestSellersQuery, openAuctionsQuery]);
+                { rows: [{ total_users: totalUsers }] },
+            ] = await Promise.all([totalPurchasesQuery, countPurchasesQuery, bestSellersQuery, totalUsersQuery]);
 
-            res.status(200).json({ totalSales, countSales, openAuctions, bestSellers});
+            res.status(200).json({ totalPurchases, countPurchases, totalUsers, bestSellers});
         } catch (err) {
             res.status(500).json({ error: err.toString() });
         }
