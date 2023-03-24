@@ -37,6 +37,8 @@ function parse(str) {
     config.host = decodeURI(result.pathname)
     config.database = result.query.db
     config.client_encoding = result.query.encoding
+    console.log("Query: ", result.query);
+    config.search_path = result.query.search_path
     return config
   }
   if (!config.host) {

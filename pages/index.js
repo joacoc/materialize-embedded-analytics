@@ -23,7 +23,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <Image src="/full_materialize.svg" alt="Materialize Full Logo" width={450} height={95} />
-        {config === null && <Source editable config={config || {}} onConfigChange={handleNewConfig} className={"flex flex-col divide-y divide-dashed divide-gray-500 mt-10"} />}
+        {config === null && <Source editable config={config || {}} onConfigChange={handleNewConfig} className={"flex flex-col mt-10"} />}
         {config && <Analytics config={config}/>}
       </main>
 

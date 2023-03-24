@@ -25,7 +25,9 @@ function Source(props) {
     const {
         host,
         authorization,
-        uri
+        uri,
+        database,
+        search_path: searchPath,
     } = config;
 
     const buildHandleChange = (field) => {
@@ -56,7 +58,7 @@ function Source(props) {
                     const escapedOutput = value.replace(/"/g, ''); // escape double quotes
                     const cleanOutput = escapedOutput.replace(/psql /, ''); // escape double quotes
                     const config = parse(cleanOutput);
-                    const { user, host } = config;
+                    const { user, host, database, search_path } = config;
 
                     if (user) {
                         newConfig.authorization = {
@@ -67,6 +69,14 @@ function Source(props) {
 
                     if (host) {
                         newConfig.host = host;
+                    }
+
+                    if (database) {
+                        newConfig.database = database;
+                    }
+
+                    if (search_path) {
+                        newConfig.search_path = search_path;
                     }
                 } else {
                     newConfig.uri = "";
@@ -95,7 +105,7 @@ function Source(props) {
             {/**
              * Materialize URI
              */}
-            <div className="mb-7">
+            <div className="mb-4">
                 <p className="text-gray-400 text-xs mb-2">Optional</p>
                 <div className="flex">
                     <input
@@ -111,10 +121,13 @@ function Source(props) {
                 </div>
             </div>
 
-             <div className="pt-7">
+             <div className="pt-4">
                 {/**
                  * Materialize Host
                  */}
+                <p className="block text-sm font-medium sm:mt-px sm:py-2">
+                    Host
+                </p>
                 <div>
                     <input
                         type="text"
@@ -150,7 +163,7 @@ function Source(props) {
                 </div>
 
                 {/**
-                 * Materialize Passowrd
+                 * Materialize Password
                  */}
                 <div className="mt-2">
                     <input
@@ -165,13 +178,49 @@ function Source(props) {
                     />
                 </div>
 
-
-                <div className="mt-4">
-                    <button className="bg-purple-700 text-sm w-full rounded p-1 hover:bg-purple-500 text-white" onClick={onContinueClick}>
-                        Continue
-                    </button>
+                {/* Optional */}
+                <p className="block text-sm font-medium text-gray-400 sm:mt-px sm:py-2">
+                    Optional
+                </p>
+                {/**
+                 * Materialize Database
+                 */}
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Database"
+                        name="materialize_database"
+                        id="database"
+                        autoComplete="materialize_database"
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
+                        onChange={buildHandleChange("database")}
+                        value={database}
+                        readOnly={editable === false}
+                    />
                 </div>
-             </div>
+
+                {/**
+                 * Materialize Schema
+                 */}
+                <div className="mt-2">
+                    <input
+                        type="text"
+                        placeholder="Search path"
+                        name="materialize_search_path"
+                        id="schema"
+                        autoComplete="materialize_search_path"
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
+                        onChange={buildHandleChange("search_path")}
+                        value={searchPath}
+                    />
+                </div>
+            </div>
+
+            <div className="mt-4">
+                <button className="bg-purple-700 text-sm w-full rounded p-1 hover:bg-purple-500 text-white" onClick={onContinueClick}>
+                    Continue
+                </button>
+            </div>
         </div >
     );
 }
