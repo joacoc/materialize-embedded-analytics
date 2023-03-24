@@ -107,7 +107,7 @@ function Source(props) {
              * Materialize URI
              */}
             <div className="mb-4">
-                <p className="text-gray-400 text-xs mb-2">Optional</p>
+                <p className="text-gray-400 text-xs mb-2">Shortcut</p>
                 <div className="flex">
                     <input
                         type="text"
