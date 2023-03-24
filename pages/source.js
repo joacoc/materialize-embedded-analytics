@@ -58,12 +58,13 @@ function Source(props) {
                     const escapedOutput = value.replace(/"/g, ''); // escape double quotes
                     const cleanOutput = escapedOutput.replace(/psql /, ''); // escape double quotes
                     const config = parse(cleanOutput);
-                    const { user, host, database, search_path } = config;
+                    const { user, password, host, database, search_path } = config;
 
                     if (user) {
                         newConfig.authorization = {
                             ...newConfig.authorization,
                             user,
+                            password,
                         };
                     }
 
