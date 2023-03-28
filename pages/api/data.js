@@ -11,7 +11,7 @@ export default async function list(req, res) {
             return;
         }
 
-        const { host, authorization, ssl, search_path, database } = config;
+        const { host, authorization, ssl, search_path, cluster, database } = config;
         if (!host || !authorization) {
             res.status(400).json({ error: 'Missing config fields.' });
             return;
@@ -29,9 +29,16 @@ export default async function list(req, res) {
 
         try {
             await client.connect();
+            let optionalPromises = [];
             if (search_path) {
-                await client.query(`SET search_path=${search_path}`);
+                optionalPromises.push(client.query(`SET search_path=${search_path}`));
             }
+
+            if (cluster) {
+                optionalPromises.push(client.query(`SET cluster=${cluster}`));
+            }
+
+            await Promise.all(optionalPromises);
             const totalPurchasesQuery = client.query("SELECT * FROM total_purchases;");
             const countPurchasesQuery = client.query("SELECT * FROM count_purchases;");
             const bestSellersQuery = client.query("SELECT * FROM best_sellers ORDER BY purchases DESC;");

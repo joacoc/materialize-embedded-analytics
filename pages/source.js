@@ -26,6 +26,7 @@ function Source(props) {
         host,
         authorization,
         uri,
+        cluster,
         database,
         search_path: searchPath,
     } = config;
@@ -213,6 +214,22 @@ function Source(props) {
                         className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
                         onChange={buildHandleChange("search_path")}
                         value={searchPath}
+                    />
+                </div>
+
+                {/**
+                 * Materialize Cluster
+                 */}
+                <div className="mt-2">
+                    <input
+                        type="text"
+                        placeholder="Cluster"
+                        name="materialize_cluster"
+                        id="cluster"
+                        autoComplete="materialize_cluster"
+                        className={`p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-xs border border-gray-300 rounded-md`}
+                        onChange={buildHandleChange("cluster")}
+                        value={cluster}
                     />
                 </div>
             </div>
